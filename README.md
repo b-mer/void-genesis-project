@@ -1,2 +1,2 @@
 # Project Sky Genesis
-work in progress raylib project
+LOVE2D project, work in progress.
