@@ -1,4 +1,4 @@
-shapes_path = "shape
+shapes_path = "shape"
 
 shapeman = {
     shape = {}
