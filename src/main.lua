@@ -1,15 +1,19 @@
-main_properties = {
+local main_properties = {
     camera = {
         x = 0,
         y = 0
     }
 }
 
-function draw_shapes()
+if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
+    require("lldebugger").start()
+end
+
+local function draw_shapes()
 
 end
 
 
-function love.draw()
+local function love.draw()
     draw_shapes()
 end
