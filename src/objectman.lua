@@ -1,6 +1,6 @@
-objects_path = "objects"
+local objects_path = "objects"
 
-objectman = {
+local objectman = {
     object = {}
 }
 
