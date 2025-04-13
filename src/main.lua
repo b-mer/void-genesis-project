@@ -29,9 +29,7 @@ local function draw_shapes()
         degrees = 1
     end
 
-    love.graphics.push()
     shapeman.draw("square", {x=400, y=250, r=100, rot=math.rad(degrees)})
-    love.graphics.pop()
 end
 
 -- Main render loop.
