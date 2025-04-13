@@ -20,18 +20,25 @@ function shapeman.init()
     end
 end
 
+-- Apply offset and rotation to a point using a given table of values.
 local function apply_offset_and_rotation(x, y, values)
+    -- Apply offset.
     x = x - values.x
     y = y - values.y
+
+    -- Apply rotation.
     x, y = x * math.cos(values.rot) - y * math.sin(values.rot), x * math.sin(values.rot) + y * math.cos(values.rot)
 
+    -- Round to nearest whole number.
     x = math.floor(x + 0.5)
     y = math.floor(y + 0.5)
+
+    -- Return x and y.
     return x, y
 end
 
 
--- Draw a shape using the given shape and given table of values.
+-- Draw a shape using the given shape name and given table of values.
 function shapeman.draw(shape_name, values)
     -- Get shape from name.
     local shape = shapeman.shape[shape_name]

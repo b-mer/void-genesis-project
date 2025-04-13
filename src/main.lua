@@ -29,7 +29,7 @@ local function draw_shapes()
         degrees = 1
     end
 
-    shapeman.draw("square", {x=400, y=250, r=100, rot=math.rad(degrees)})
+    shapeman.draw("line", {x=400, y=250, r=100, rot=math.rad(degrees)})
 end
 
 -- Main render loop.
