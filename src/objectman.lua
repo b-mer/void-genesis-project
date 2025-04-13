@@ -5,4 +5,4 @@ local objectman = {
 }
 
 
--- Iterate through each module in the objects folder and append it to the object table
+-- Iterate through each module in the objects folder and append it to the object table.

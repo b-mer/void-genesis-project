@@ -1,7 +1,13 @@
+-- For Local Lua Debugger vscode extension by tomblind.
+if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
+    require("lldebugger").start()
+end
+
+-- Get all modules.
 local shapeman = require("./shapeman")
 local objectman = require("./objectman")
 
--- Main properties of session
+-- Main properties of session.
 local main_properties = {
     camera = {
         x = 0,
@@ -9,21 +15,26 @@ local main_properties = {
     }
 }
 
--- For Local Lua Debugger vscode extension by tomblind
-if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
-    require("lldebugger").start()
-end
-
+-- To run on load.
 function love.load()
     shapeman.init()
 end
 
--- Draw all shapes
+local degrees = 0
+
+-- Draw all shapes.
 local function draw_shapes()
-    return
+    degrees = degrees + 1
+    if degrees > 360 then
+        degrees = 1
+    end
+
+    love.graphics.push()
+    shapeman.draw("square", {x=400, y=250, r=100, rot=math.rad(degrees)})
+    love.graphics.pop()
 end
 
--- Main render loop
+-- Main render loop.
 function love.draw()
     draw_shapes()
 end

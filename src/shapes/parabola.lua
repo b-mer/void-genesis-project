@@ -1,7 +1,7 @@
 return {
-    -- Parts of the shape defined by equations
+    -- Parts of the shape defined by equations.
     components = {
-        function(x, y, a)
+        function (x, y, a)
             x = x - a.x
             y = y - a.y
 
@@ -10,8 +10,10 @@ return {
 
             x = math.floor(x + 0.5)
             y = math.floor(y + 0.5)
-
-            return math.abs(x + y) + math.abs(x - y) == a.r
+            
+            return (
+            y == x^2
+            )
         end
     }
 }

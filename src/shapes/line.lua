@@ -11,7 +11,7 @@ return {
             x = math.floor(x + 0.5)
             y = math.floor(y + 0.5)
 
-            return math.abs(x + y) + math.abs(x - y) == a.r
+            return x == y
         end
     }
 }
