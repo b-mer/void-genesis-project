@@ -2,7 +2,7 @@ return {
     shape = "square",
     transform = {
         -- r defines radius or overall size in relevant shapes.
-        r=100,
+        r=50,
         -- h defines height in relevant shapes.
         h=1,
         -- w defines width in relevant shapes.
@@ -14,8 +14,11 @@ return {
         -- Rotation.
         rot=0
     },
+    player_properties = {
+        speed = 200
+    },
     scripts = {
-        "floaty"
+        "player"
     },
     visible = true
 }

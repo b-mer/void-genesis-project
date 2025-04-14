@@ -10,6 +10,7 @@ local space = require("./space")
 function love.load()
     space.init()
     space.create_entity("floaty", space.objectman.object.floaty)
+    space.create_entity("player", space.objectman.object.player)
 end 
 
 -- Main render loop.
@@ -19,17 +20,18 @@ end
 
 -- Main update loop.
 function love.update(dt)
-    if love.keyboard.isDown("down") then
-        space.camera.y = space.camera.y - (space.camera.speed * dt)
-    end
-    if love.keyboard.isDown("up") then
-        space.camera.y = space.camera.y + (space.camera.speed * dt)
-    end
+    space.run_all_entity_scripts(dt)
+    -- if love.keyboard.isDown("down") then
+    --     space.camera.y = space.camera.y - (space.camera.speed * dt)
+    -- end
+    -- if love.keyboard.isDown("up") then
+    --     space.camera.y = space.camera.y + (space.camera.speed * dt)
+    -- end
 
-    if love.keyboard.isDown("left") then
-        space.camera.x = space.camera.x + (space.camera.speed * dt)
-    end
-    if love.keyboard.isDown("right") then
-        space.camera.x = space.camera.x - (space.camera.speed * dt)
-    end
+    -- if love.keyboard.isDown("left") then
+    --     space.camera.x = space.camera.x + (space.camera.speed * dt)
+    -- end
+    -- if love.keyboard.isDown("right") then
+    --     space.camera.x = space.camera.x - (space.camera.speed * dt)
+    -- end
 end
