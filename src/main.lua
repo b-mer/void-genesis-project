@@ -3,36 +3,40 @@ if os.getenv("LOCAL_LUA_DEBUGGER_VSCODE") == "1" then
     require("lldebugger").start()
 end
 
--- Get all modules.
-local shapeman = require("./shapeman")
-local objectman = require("./objectman")
-
--- Main properties of session.
-local main_properties = {
-    camera = {
-        x = 0,
-        y = 0
-    }
-}
+-- Get modules.
+local space = require("./space")
 
 -- To run on load.
 function love.load()
-    shapeman.init()
+    space.init()
+    space.create_entity("floaty", space.objectman.object.floaty)
 end
 
 local degrees = 0
 
--- Draw all shapes.
-local function draw_shapes()
-    degrees = degrees + 1
+-- Main render loop.
+function love.draw()
+    space.draw_all()
+end
+
+-- Main update loop.
+function love.update(dt)
+    degrees = degrees + (100 * dt)
     if degrees > 360 then
         degrees = 1
     end
 
-    shapeman.draw("line", {x=400, y=250, r=100, rot=math.rad(degrees)})
-end
+    if love.keyboard.isDown("down") then
+        space.camera.y = space.camera.y - (space.camera.speed * dt)
+    end
+    if love.keyboard.isDown("up") then
+        space.camera.y = space.camera.y + (space.camera.speed * dt)
+    end
 
--- Main render loop.
-function love.draw()
-    draw_shapes()
+    if love.keyboard.isDown("left") then
+        space.camera.x = space.camera.x + (space.camera.speed * dt)
+    end
+    if love.keyboard.isDown("right") then
+        space.camera.x = space.camera.x - (space.camera.speed * dt)
+    end
 end

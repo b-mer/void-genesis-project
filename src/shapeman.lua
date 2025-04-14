@@ -1,7 +1,7 @@
 -- Path where shapes are stored.
 local shapes_path = "shapes"
 
--- Shape manager module
+-- Shape manager module.
 local shapeman = {
     shape = {}
 }
@@ -37,14 +37,13 @@ local function apply_offset_and_rotation(x, y, values)
     return x, y
 end
 
-
--- Draw a shape using the given shape name and given table of values.
-function shapeman.draw(shape_name, values)
-    -- Get shape from name.
+-- Draw a shape using the given shape name and given table of values and camera info.
+function shapeman.draw(shape_name, transform, camera)
+    -- Get shape from shape name.
     local shape = shapeman.shape[shape_name]
     -- Get width and height of screen.
     local width, height = love.graphics.getDimensions()
-    -- Gap between each set of x and y values.
+    -- Gap between each set of x and y transform.
     local gap = 1
     for i, component in pairs(shape.components) do
         -- Table of verticies
@@ -52,9 +51,9 @@ function shapeman.draw(shape_name, values)
         for x = 0, width, gap do
             for y = 0, height, gap do
                 -- Apply offset and rotation to point of shape.
-                local point_x, point_y = apply_offset_and_rotation(x, y, values)
+                local point_x, point_y = apply_offset_and_rotation(x - camera.x, y - camera.y, transform)
                 -- If the point matches equation, add it to the table of verticies.
-                if component(point_x, point_y, values) then
+                if component(point_x, point_y, transform) then
                     table.insert(verticies, x)
                     table.insert(verticies, y)
                 end
