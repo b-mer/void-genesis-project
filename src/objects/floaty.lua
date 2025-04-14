@@ -1,8 +1,12 @@
 return {
     shape = "square",
     transform = {
-        -- r defines the thickness of the square.
+        -- r defines radius or overall size in relevant shapes.
         r=10,
+        -- h defines height in relevant shapes.
+        h=1,
+        -- w defines width in relevant shapes.
+        w=1,
         -- Translate x.
         x=0,
         -- Translate y.

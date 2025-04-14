@@ -10,9 +10,7 @@ local space = require("./space")
 function love.load()
     space.init()
     space.create_entity("floaty", space.objectman.object.floaty)
-end
-
-local degrees = 0
+end 
 
 -- Main render loop.
 function love.draw()
@@ -21,11 +19,6 @@ end
 
 -- Main update loop.
 function love.update(dt)
-    degrees = degrees + (100 * dt)
-    if degrees > 360 then
-        degrees = 1
-    end
-
     if love.keyboard.isDown("down") then
         space.camera.y = space.camera.y - (space.camera.speed * dt)
     end
