@@ -2,6 +2,8 @@ return function (entity, dt, space)
     local transform = entity.transform
     local physics = entity.physics
 
+    local physics_speed = 50
+
     
     physics.velocity_x = physics.velocity_x + (space.properties.wind_x / physics.density * dt)
     physics.velocity_y = physics.velocity_y + (space.properties.wind_y / physics.density * dt)
@@ -22,9 +24,9 @@ return function (entity, dt, space)
     end
 
 
-    transform.x = transform.x + physics.velocity_x
-    transform.y = transform.y + physics.velocity_y
-    transform.rot = transform.rot + physics.velocity_rot
+    transform.x = transform.x + physics.velocity_x * physics_speed * dt
+    transform.y = transform.y + physics.velocity_y * physics_speed * dt
+    transform.rot = transform.rot + physics.velocity_rot * physics_speed * dt
 
     if physics.velocity_x ~= 0 then
         physics.velocity_x = physics.velocity_x  * (1 - math.min(physics.friction * dt, 1))
