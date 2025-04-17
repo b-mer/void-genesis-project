@@ -9,7 +9,8 @@ return {
     physics = {
         friction = 1,
         rot_friction = 1,
-        density = 1
+        density = 1,
+        bounce = 5
     },
     visible = true
 }

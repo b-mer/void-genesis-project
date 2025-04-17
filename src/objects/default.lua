@@ -25,7 +25,8 @@ return {
         -- This affects movement by additional forces such as wind.
         density = 1,
         -- If collision should be enabled or not.
-        collision = true
+        collision = true,
+        bounce = 1
     },
     visible = true,
     collidable = true,
