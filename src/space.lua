@@ -5,10 +5,16 @@ local scripts_path = "scripts"
 local space = {
     entities = {},
     scripts = {},
+    -- Camera properties.
     camera = {
         x = 0,
         y = 0,
         speed = 300
+    },
+    -- Space properties.
+    properties = {
+        wind_x = -0.01,
+        wind_y = -0.01
     },
     -- Get object module for interacting with objects.
     objectman = require("./objectman")
@@ -25,6 +31,22 @@ local function copy_table(table)
         end
     end
     return new_table
+end
+
+-- Combine tables.
+local function copy_and_combine_tables(table1, table2)
+    local combined_table = copy_table(table1)
+    for key, value in pairs(table2) do
+        if type(value) == "table" then
+            if type(combined_table[key]) ~= "table" then
+                combined_table[key] = {}
+            end
+            combined_table[key] = copy_and_combine_tables(combined_table[key], value)
+        else
+            combined_table[key] = value
+        end
+    end
+    return combined_table
 end
 
 -- Initalize space.
@@ -44,14 +66,17 @@ function space.init()
 end
 
 -- Create a new entity in space using given name and clones the given object table, then store scripts.
-function space.create_entity(entity_name, object)
-    space.entities[entity_name] = copy_table(object)
+function space.create_entity(entity_name, object, additional_properties)
+    space.entities[entity_name] = copy_and_combine_tables(space.objectman.object.default, object)
+    if additional_properties then
+        space.entities[entity_name] = copy_and_combine_tables(space.entities[entity_name], additional_properties)
+    end
 end
 
 -- Run scripts of a specific entity in space.
 function space.run_entity_scripts(entity, dt)
     for i, script_name in ipairs(entity.scripts) do
-        space.scripts[script_name](entity, dt)
+        space.scripts[script_name](entity, dt, space)
     end
 end
 

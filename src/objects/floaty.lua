@@ -1,21 +1,16 @@
 return {
     shape = "square",
     transform = {
-        -- r defines radius or overall size in relevant shapes.
-        r=100,
-        -- h defines height in relevant shapes.
-        h=1,
-        -- w defines width in relevant shapes.
-        w=1,
-        -- Translate x.
-        x=0,
-        -- Translate y.
-        y=0,
-        -- Rotation.
-        rot=0
+        r = 100
     },
     scripts = {
-        "floaty"
+        "floaty",
+        "global_physics"
+    },
+    physics = {
+        friction = 1,
+        rot_friction = 1,
+        density = 1
     },
     visible = true
 }

@@ -1,7 +1,7 @@
 return {
     -- Parts of the shape defined by equations.
     components = {
-        function(x, y, a)
+        function(x, y, transform)
             return x == y
         end
     }

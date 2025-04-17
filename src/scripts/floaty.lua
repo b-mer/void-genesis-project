@@ -1,4 +1,4 @@
-return function (entity, dt)
+return function (entity, dt, space)
     if math.deg(entity.transform.rot) == 360 then
         entity.transform.rot = math.rad(0)
     else

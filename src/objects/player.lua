@@ -1,24 +1,21 @@
 return {
-    shape = "square",
+    shape = "triangle",
     transform = {
-        -- r defines radius or overall size in relevant shapes.
-        r=50,
-        -- h defines height in relevant shapes.
-        h=1,
-        -- w defines width in relevant shapes.
-        w=1,
-        -- Translate x.
-        x=0,
-        -- Translate y.
-        y=0,
-        -- Rotation.
-        rot=0
+        r = 20,
+        x = 0,
+        y = 0
     },
     player_properties = {
         speed = 200
     },
     scripts = {
-        "player"
+        "player",
+        'global_physics'
+    },
+    physics = {
+        friction = 0.9,
+        rot_friction = 1,
+        density = 1
     },
     visible = true
 }
