@@ -99,9 +99,11 @@ end
 function space.check_collisions(checking_entity)
     local collisions = {}
     for entity_name, entity in pairs(space.entities) do
-        if entity ~= checking_entity and entity.collidable then
-            if space.objectman.collision_check(checking_entity, entity, space.camera) then
-                table.insert(collisions, entity)
+        if entity.collidable == true then
+            if entity ~= checking_entity then
+                if space.objectman.collision_check(checking_entity, entity, space.camera) then
+                    table.insert(collisions, entity)
+                end
             end
         end
     end

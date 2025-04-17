@@ -32,7 +32,7 @@ end
 -- Draw an object.
 function objectman.draw_object(object, camera)
     if object.visible then
-        shapeman.draw(object.shape, object.transform, camera, object.independent_of_camera)
+        shapeman.draw(object.shape, object.transform, camera, object.independent_of_camera, object.color)
     end
 end
 

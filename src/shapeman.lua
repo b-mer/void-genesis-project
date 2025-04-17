@@ -65,7 +65,7 @@ function shapeman.shapes_intersect(shape_name1, transform1, shape_name2, transfo
 end
 
 -- Draw a shape using the given shape name and given table of values and camera info.
-function shapeman.draw(shape_name, transform, camera, independent)
+function shapeman.draw(shape_name, transform, camera, independent, color)
     -- Get shape from shape name.
     local shape = shapeman.shape[shape_name]
     -- Get width and height of screen.
@@ -91,7 +91,8 @@ function shapeman.draw(shape_name, transform, camera, independent)
                 end
             end
         end
-        -- Draw all verticies.
+        -- Draw all verticies after setting color.
+        love.graphics.setColor(color)
         love.graphics.points(verticies)
     end
 end

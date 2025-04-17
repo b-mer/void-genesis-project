@@ -1,6 +1,8 @@
 -- DEFAULT OBJECT PROPERTIES
 return {
     shape = "square",
+    -- Color to draw shape as.
+    color = {1,1,1, 1},
     transform = {
         -- r defines radius or overall size in relevant shapes.
         r = 10,
@@ -28,6 +30,8 @@ return {
         collision = true,
         bounce = 1
     },
+    -- Scripts for execution during loop.
+    scripts = {},
     visible = true,
     collidable = true,
     -- If object is drawn independent of camera position.
