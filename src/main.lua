@@ -11,7 +11,7 @@ function love.load()
     love.mouse.setVisible(false)
     space.init()
 
-    space.create_entity("background", space.objectman.object.background)
+    --space.create_entity("background", space.objectman.object.background)
 
     space.create_entity("floaty1", space.objectman.object.floaty, {transform = {x = 400, y = 200, r=70, rot=math.random()}})
     space.create_entity("floaty2", space.objectman.object.floaty, {transform = {x = 200, y = 200, r=50, rot=math.random()}})
