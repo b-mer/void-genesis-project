@@ -25,10 +25,14 @@ function objectman.init()
     shapeman.init()
 end
 
+function objectman.collision_check(object1, object2, camera)
+    return shapeman.shapes_intersect(object1.shape, object1.transform, object2.shape, object2.transform, camera)
+end
+
 -- Draw an object.
 function objectman.draw_object(object, camera)
     if object.visible then
-        shapeman.draw(object.shape, object.transform, camera)
+        shapeman.draw(object.shape, object.transform, camera, object.independent_of_camera)
     end
 end
 

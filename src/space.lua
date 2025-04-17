@@ -9,12 +9,14 @@ local space = {
     camera = {
         x = 0,
         y = 0,
-        speed = 300
+        acceleration = 5,
+        max_speed = 20
     },
     -- Space properties.
     properties = {
         wind_x = -0.01,
-        wind_y = -0.01
+        wind_y = -0.01,
+        wind_rot = math.rad(0.05)
     },
     -- Get object module for interacting with objects.
     objectman = require("./objectman")
@@ -33,7 +35,7 @@ local function copy_table(table)
     return new_table
 end
 
--- Combine tables.
+-- Copy and combine tables.
 local function copy_and_combine_tables(table1, table2)
     local combined_table = copy_table(table1)
     for key, value in pairs(table2) do
@@ -92,6 +94,18 @@ function space.draw_all()
     for entity_name, entity in pairs(space.entities) do
         space.objectman.draw_object(entity, space.camera)
     end
+end
+
+function space.check_collisions(checking_entity)
+    local collisions = {}
+    for entity_name, entity in pairs(space.entities) do
+        if entity ~= checking_entity and entity.collidable then
+            if space.objectman.collision_check(checking_entity, entity, space.camera) then
+                table.insert(collisions, entity)
+            end
+        end
+    end
+    return collisions
 end
 
 return space

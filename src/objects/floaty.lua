@@ -4,7 +4,6 @@ return {
         r = 100
     },
     scripts = {
-        "floaty",
         "global_physics"
     },
     physics = {

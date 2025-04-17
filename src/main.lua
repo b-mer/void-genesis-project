@@ -8,9 +8,12 @@ local space = require("./space")
 
 -- To run on load.
 function love.load()
+    love.mouse.setVisible(false)
     space.init()
-    space.create_entity("floaty", space.objectman.object.floaty, {transform = {x = 500, y = 500}})
-    space.create_entity("player", space.objectman.object.player)
+    space.create_entity("floaty", space.objectman.object.floaty, {transform = {x = 400, y = 200}})
+    space.create_entity("player", space.objectman.object.player, {transform = {x = 400, y = 400}})
+
+    space.create_entity("mouse", space.objectman.object.mouse)
 end 
 
 -- Main render loop.

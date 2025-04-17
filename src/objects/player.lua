@@ -6,7 +6,8 @@ return {
         y = 0
     },
     player_properties = {
-        speed = 200
+        acceleration = 100,
+        max_speed = 5,
     },
     scripts = {
         "player",
